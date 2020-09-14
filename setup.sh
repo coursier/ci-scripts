@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+#
+# coursier launcher setup script
+# See https://github.com/coursier/ci-scripts
+#
+
+
 set -e
 
 coursier_version="2.0.0-RC6-24"
