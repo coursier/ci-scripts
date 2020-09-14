@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-coursier_version="2.0.0-RC6-10"
+coursier_version="2.0.0-RC6-24"
 for_graalvm="false"
 dest="cs"
 
