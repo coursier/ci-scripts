@@ -65,7 +65,7 @@ else
   mkdir -p "$(dirname "$cache_dest")"
   tmp_dest="$cache_dest.tmp-setup"
   echo "Downloading $cs_url"
-  curl -Lo "$tmp_dest" "$cs_url"
+  curl -fLo "$tmp_dest" "$cs_url"
   mv "$tmp_dest" "$cache_dest"
 fi
 
