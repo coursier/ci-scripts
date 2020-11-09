@@ -8,7 +8,7 @@
 
 set -e
 
-coursier_version="2.0.5"
+coursier_version="2.0.6"
 dest="cs"
 
 # Adapted from https://github.com/paulp/sbt-extras/blob/ea47026bd55439760f4c5e9b27b002fa64a8b82f/sbt#L427-L435 and around
