@@ -18,7 +18,7 @@ elif [ "$(uname)" == "Darwin" ]; then
   CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-x86_64-apple-darwin.gz"
   CACHE_BASE="$HOME/Library/Caches/Coursier/v1"
 else
-   echo "This standalone cs launcher supports only Linux and macOS."
+   echo "This standalone cs launcher supports only Linux and macOS." 1>&2
    exit 1
 fi
 
@@ -28,7 +28,7 @@ CS_BIN_PATH=${CACHE_DEST%.gz}
 if [ ! -f "$CACHE_DEST" ]; then
   mkdir -p "$(dirname "$CACHE_DEST")"
   TMP_DEST="$CACHE_DEST.tmp-setup"
-  echo "Downloading $CS_URL"
+  echo "Downloading $CS_URL" 1>&2
   curl -fLo "$TMP_DEST" "$CS_URL"
   mv "$TMP_DEST" "$CACHE_DEST"
 fi
