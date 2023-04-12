@@ -4,7 +4,7 @@
 
 set -eu
 
-CS_VERSION="2.1.0-M6-28-gbad85693f"
+CS_VERSION="2.1.1"
 
 GH_ORG="coursier"
 GH_NAME="coursier"
