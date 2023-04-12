@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-# Adapted from https://github.com/VirtusLab/scala-cli/blob/b754d2afdda114e97febfb0090773cc582bafd19/scala-cli.sh
+# cs launcher script
+# This script lives at https://github.com/coursier/ci-scripts/blob/master/cs.sh
+# (Raw version for curl: https://github.com/coursier/ci-scripts/raw/master/cs.sh)
+
+# Originally adapted from https://github.com/VirtusLab/scala-cli/blob/b754d2afdda114e97febfb0090773cc582bafd19/scala-cli.sh
 
 set -eu
 
