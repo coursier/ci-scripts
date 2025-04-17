@@ -8,7 +8,7 @@
 
 set -eu
 
-CS_VERSION="2.1.1"
+CS_VERSION="2.1.25-M4"
 
 GH_ORG="coursier"
 GH_NAME="coursier"
@@ -21,11 +21,25 @@ if [ "$(expr substr $(uname -s) 1 5 2>/dev/null)" == "MINGW" ]; then
 fi
 
 if [ "$(expr substr $(uname -s) 1 5 2>/dev/null)" == "Linux" ]; then
-  CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-x86_64-pc-linux.gz"
-  CACHE_BASE="$HOME/.cache/coursier/v1"
+  arch="$(uname -m)"
+  if [ "$arch" == "aarch64" ] || [ "$arch" == "x86_64" ]; then
+    CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-$arch-pc-linux.gz"
+    CACHE_BASE="$HOME/.cache/coursier/v1"
+  else
+    echo "No native coursier launcher available for architecture $arch on Linux" 1>&2
+    exit 1
+  fi
 elif [ "$(uname)" == "Darwin" ]; then
-  CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-x86_64-apple-darwin.gz"
+  arch="$(uname -m)"
   CACHE_BASE="$HOME/Library/Caches/Coursier/v1"
+  if [ "$arch" == "x86_64" ]; then
+    CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-x86_64-apple-darwin.gz"
+  elif [[ "$arch" == "arm64" ]]; then
+    CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-aarch64-apple-darwin.gz"
+  else
+    echo "No native coursier launcher available for architecture $arch on macOS" 1>&2
+    exit 1
+  fi
 elif [ "$IS_WINDOWS" == true ]; then
   CS_URL="https://github.com/$GH_ORG/$GH_NAME/releases/download/$TAG/cs-x86_64-pc-win32.zip"
   CACHE_BASE="$LOCALAPPDATA/Coursier/cache/v1"
